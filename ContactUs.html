@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact Page</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+<script src="js/RegiSync_app_create.js"></script>	
+</head>
+<style>
+body {
+	background-color: rgb(102, 255, 204);
+}
+
+.jumbotron {
+	background-color: rgb(102, 255, 204);
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: rgb(102, 255, 204);
+	z-index: 9999;
+	border: 0;
+	font-size: 12px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 4px;
+	border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: rgb(204, 153, 255) !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: rgb(204, 153, 255) !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: rgb(204, 153, 255) !important;
+}
+</style>
+
+
+
+</head>
+<body>
+<div ng-app="regisync" ng-controller="regisyncCtrl">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="RegiSync.html">RegiSync</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="SearchRegistriesPage.html">Search for
+							Registry</a></li>
+					<li><a href="NewRegistryPage.html">New Registry</a></li>
+					<li><a href="ContactUs.html">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<div>
+<div>
+<div>
+		<div class="container">	
+		
+		
+				
+		
+		<h1>' </h1>
+
+					<form action="#" style="float-center">
+						First name:<br> <input type="text" name="firstname"
+							value=""> <br> 
+							Last name:<br> <input
+							type="text" name="lastname" value=""> <br>
+							Email:<br> <input
+							type="text" name="email" value=""> <br>
+							Issue:<br> <input
+							type="text" name="issue" value="Please Enter Issue Here"> <br>
+						<br> 
+						<button type="button" ng-click="ContactUs()" 
+						class="btn btn-success"> <span ></span>Submit</button>
+					</form>
+					<br>
+					<br>
+
+				</div>
+		
+	</div>
+	</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="span4"></div>
+			<div class="span4"><img class="center-block" src="images\RegiSync.png" style="width: 200px;
+				height: 200px;"></div>
+			<div class="span4"></div>
+		</div>
+
+		<footer class="container-fluid text-center">
+			<a href="RegiSync.html" title="To Top"> <span
+				class="glyphicon glyphicon-chevron-up"></span>
+			</a>
+			<p>Project made by Seth Poynter.</p>
+		</footer>
+		</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registry Search</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+<script src="js/RegiSync_app_create.js"></script>	
+</head>
+<style>
+
+body {
+	background-color: rgb(102, 255, 204);
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: rgb(102, 255, 204);
+	z-index: 9999;
+	border: 0;
+	font-size: 12px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 4px;
+	border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: rgb(204, 153, 255) !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: rgb(204, 153, 255) !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: rgb(204, 153, 255) !important;
+}
+</style>
+
+
+
+</head>
+<body>
+<div ng-app="regisync" ng-controller="regisyncCtrl">
+		<div class="container-fluid">
+		
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="RegiSync.html">RegiSync</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="SearchRegistriesPage.html">Search for Registry</a></li>
+					<li><a href="NewRegistryPage.html">New Registry</a></li>
+					<li><a href="ContactUs.html">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+		<br><br><br>
+		
+			
+			<div class="registrySearchPage" ng-hide="hideRegistrySearchPage">				
+							
+					<table  class="registrySearch">																			
+				</table>
+					
+					<button type="button" ng-click="getAllRegistries()" 
+						class="btn btn-success"> <span class="glyphicon glyphicon-refresh"></span>Load Registries</button>					
+				
+				<br>
+				<div ng-hide="hideRegistrySearchResults">	
+				<label>Filter:</label>
+				<input type="text" ng-model="nameFilter" placeholder="filter..">
+				
+				<table  class="table" >
+					<tr>
+						<th>Registry ID</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>						
+					</tr>
+					
+			
+					<tr ng-repeat="registry in myRegistries | filter : nameFilter" ng-click="goToUpdateRegistry(registry)">
+						<td>{{registry.registryId}}</td>
+						<td>{{registry.firstName}}</td>
+						<td>{{registry.lastName}}</td>
+						<td>{{registry.email}}</td>			
+					</tr>				
+				</table>	
+				</div>		
+			</div>
+			
+			
+			<div class="registryUpdatePage" ng-hide="hideRegistryUpdatePage"> 
+				
+					<table  class="registryUpdate">						
+						<tr>							
+							<td><label for="id">ID:</label>
+							<span id="id" ng-bind="registry.registryId"></span>
+							</td>
+						</tr>						
+						<tr>							
+							<td><label for="firstName">First Name:</label><br>
+							<input id="firstName" type="text" ng-model="registry.firstName" size=40/></td>
+						</tr>
+						<tr>							
+							<td><label for="lastName">Last Name:</label><br>
+							<input id="lastName" type="text" ng-model="registry.lastName" size=40/></td>
+						</tr>
+						<tr>							
+							<td><label for="email">Email:</label><br>
+							<input id="email" type="text" ng-model="registry.email" size=40/></td>
+						</tr>																			
+					</table>
+				
+				<br>
+							
+			
+			
+			<h5>Press 'Update' to save registry changes.</h5>
+				<h5>Press 'Cancel' to return to registry search.</h5>		
+				<h5>Press 'Delete' to delete registry.</h5>	
+				
+				<div class="header">
+					<button type="button" ng-click="putRegistry()" 
+						class="btn btn-success"> <span class="glyphicon glyphicon"></span>Update</button>
+					<button type="button" ng-click="registrySearch()" 
+						class="btn btn-warning"> <span class="glyphicon"></span>Cancel</button>	
+					<button type="button" ng-click="deleteRegistry(registry.registryId)" 
+						class="btn btn-danger"> <span class="glyphicon"></span>Delete</button>				
+				</div>	
+				
+				<br>
+				<button type="button" ng-click="amazonUpdate()" 
+						class="btn btn-warning"> <span class="glyphicon"></span>Amazon Update</button>
+						
+						<button type="button" ng-click="getAnalytics(registry)" 
+						class="btn btn-danger"> <span class="glyphicon"></span>Registry Analytics</button>
+				
+		<button type="button" ng-click="getAllGiftsByRegistry(registry.registryId)" 
+						class="btn btn-success"> <span class="glyphicon glyphicon-refresh"></span>Load Gifts</button>	
+	
+		</div>	
+		
+		
+	
+	
+		<div class="giftsSearchPage" ng-hide="hideGiftsSearchResults">					
+					<br><p>*Notice* To purchase gift, please copy description or sku, and paste in the home site of the store where the gift is located. Store Id's: 1 = Amazon, 2 = Target</p>
+				<table  class="table" >
+					<tr>
+						<th>Product Description</th>
+						<th>Price</th>		
+						<th>SKU</th>	
+						<th>Store ID</th>	
+						<th>Quantity needed</th>	
+						<th>Quantity purchased</th>			
+					</tr>			
+					<tr ng-repeat="gift in myGifts" >
+						<td>{{gift.description}}</td>
+						<td>{{gift.price}}</td>		
+						<td>{{gift.sku}}</td>	
+						<td>{{gift.storeId}}</td>	
+						<td>{{gift.needed}}</td>	
+						<td>{{gift.purchased}}</td>		
+					</tr>				
+				</table>
+				
+
+					
+				</div>
+
+			<div class="giftsAnalyticsPage" ng-hide="hideGiftsAnalyticsResults">
+				<br>
+				<table class="table">
+					<tr>
+						<th>Total Gifts</th>
+						<th>Gifts Needed</th>
+						<th>Gifts Purchased</th>
+						<th>Purchased Rate</th>
+						<th>Total Registry Cost</th>
+						<th>Average Gift Cost</th>
+					</tr>
+					<tr>
+						<td>{{myAnalytics.totalGifts}}</td>
+						<td>{{myAnalytics.giftsNeeded}}</td>
+						<td>{{myAnalytics.giftsPurchased}}</td>
+						<td>{{(myAnalytics.giftsPurchased / myAnalytics.giftsNeeded) * 100}}%</td>
+						<td>{{myAnalytics.totalCost | currency}}</td>
+						<td>{{myAnalytics.totalCost / myAnalytics.giftsNeeded | currency}}</td>
+					</tr>
+				</table>
+
+
+
+
+			</div>
+
+		</div>
+			
+				
+		
+		
+	<div class="container">
+		<div class="row">
+			<div class="span4"></div>
+			<div class="span4"><img class="center-block" src="images\RegiSync.png" style="width: 200px;
+				height: 200px;"></div>
+			<div class="span4"></div>
+		</div>
+
+		<footer class="container-fluid text-center">
+			<a href="RegiSync.html" title="To Top"> <span
+				class="glyphicon glyphicon-chevron-up"></span>
+			</a>
+			<p>Project made by Seth Poynter.</p>
+		</footer>
+		</div>
+		</div>
+</body>
+</html>

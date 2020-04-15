@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Create</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+<script src="js/RegiSync_app_create.js"></script>
+</head>
+<style>
+body {
+	background-color: rgb(102, 255, 204);
+}
+
+.jumbotron {
+	background-color: rgb(102, 255, 204);
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: rgb(102, 255, 204);
+	z-index: 9999;
+	border: 0;
+	font-size: 12px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 4px;
+	border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: rgb(204, 153, 255) !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: rgb(204, 153, 255) !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: rgb(204, 153, 255) !important;
+}
+</style>
+
+
+
+</head>
+<body>
+
+<div ng-app="regisync" ng-controller="regisyncCtrl">
+		<div class="container-fluid">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="RegiSync.html">RegiSync</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="SearchRegistriesPage.html">Search for Registry</a></li>
+					<li><a href="NewRegistryPage.html">New Registry</a></li>
+					<li><a href="ContactUs.html">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div ng-app="regisync" ng-controller="regisyncCtrl">
+		<div class="container">		
+		<br>	<br>
+			
+			<h5>Please enter all required data and press 'Create' to enter a new Registry!</h5>
+			<h5>Press 'Clear' to reset input.</h5>
+			
+			<div class="registryCreatePage">						
+				
+				<table  class="registryCreateTable">						
+						<tr>							
+							<td>
+								<label>First Name:</label><br>
+								<input name="firstName" type="text" required ng-model="newRegistryFirstName" ng-disabled="lock" size=40/>
+								<p><span class="text-primary" ng-bind="firstNameMessage"></span></p>
+							</td>							
+						</tr>
+						<tr>							
+							<td>
+								<label>Last Name:</label><br>
+								<input name="lastName" type="text" required ng-model="newRegistryLastName" ng-disabled="lock" size=40/>
+								<p><span class="text-primary" ng-bind="lastNameMessage"></span></p>
+							</td>							
+						</tr>					
+						<tr>							
+							<td>
+								<label>Email:</label><br>
+								<input type="text" required name="email" 
+										ng-model="newRegistryEmail" 
+										ng-disabled="lock"><p><span class="text-primary" ng-bind="emailMessage"></span></p>								
+							</td>
+						</tr>	
+						<tr>							
+							<td>
+								<label>Amazon URL:</label><br>
+								<input type="text" required ng-model="newRegistryAmazonUrl" name="amazonUrl" 
+										ng-model="amazonUrl" 
+										ng-disabled="lock">
+								<p><span class="text-primary" ng-bind="amazonMessage"></span></p>								
+							</td>
+						</tr>
+						<tr>							
+							<td>
+								<label>Target URL:</label><br>
+								<input type="text"  ng-model="newRegistryTargetUrl" name="targetUrl" 
+										ng-model="targetUrl" 
+										ng-disabled="lock">
+								<br>	
+								<p><span class="text-primary" ng-bind="targetMessage"></span></p>								
+							</td>
+						</tr>													
+				</table>
+				
+				<div class="header">
+					<button type="button" ng-click="createRegistry()" 
+						class="btn btn-success"> <span class="glyphicon glyphicon-edit"></span>Create Registry</button>			
+					
+					<p> <span class="text-primary" id="createStatusId" ng-bind="createStatus"></span></p>
+				</div>							
+			</div>
+	<div class="container">
+		<div class="row">
+			<div class="span4"></div>
+			<div class="span4"><img class="center-block" src="images\RegiSync.png" style="width: 200px;
+				height: 200px;"></div>
+			<div class="span4"></div>
+		</div>
+
+		<footer class="container-fluid text-center">
+			<a href="RegiSync.html" title="To Top"> <span
+				class="glyphicon glyphicon-chevron-up"></span>
+			</a>
+			<p>Project made by Seth Poynter.</p>
+		</footer>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+</body>
+</html>
